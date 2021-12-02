@@ -29,8 +29,13 @@ const versionIncrements = ["patch", "minor", "major"]
 
 const inc = (i) => semver.inc(currentVersion, i, preId)
 const bin = (name) => resolve(__dirname, `../node_modules/.bin/${name}`)
-const run = (bin, args, opts = {}) =>
-  execa(bin, args, { stdio: "inherit", ...opts })
+const run = (bin, args, opts = {}) => {
+  console.log(
+    chalk.bold.magenta(`【执行】${bin} ${args.join(" ")}`)
+  )
+  return execa(bin, args, { stdio: "inherit", ...opts })
+}
+  
 const dryRun = (bin, args, opts = {}) =>
   console.log(chalk.blue(`[dryrun] ${bin} ${args.join(" ")}`, opts))
 const runIfNotDry = isDryRun ? dryRun : run
@@ -83,7 +88,7 @@ async function main() {
 
   step('🍇 单元测试...')
   if(!isDryRun) {
-    await run(bin('jest', ['--clearCache']))
+    await run(bin('jest'), ['--clearCache'])
     step('🍇 单元测试完成')
   }else{
     step('🍉 跳过')
