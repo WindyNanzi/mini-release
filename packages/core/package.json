@@ -1,9 +1,9 @@
 {
   "name": "@mini-release/core",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@mini-release/shared": "0.1.7"
+    "@mini-release/shared": "0.1.8"
   }
 }
