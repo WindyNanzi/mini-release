@@ -1,0 +1,15 @@
+## 0.1.1 (2021-12-02)
+
+
+### Bug Fixes
+
+* 取消默认干跑状态 ([566f0b8](https://github.com/WindyNanzi/mini-release/commit/566f0b82b36a5b836d959995c81487985e2ac0b8))
+* 针对 jest 的简单配置 ([be9f6c6](https://github.com/WindyNanzi/mini-release/commit/be9f6c6a10d3ab1ea33adef13c10707a46406e65))
+
+
+### Features
+
+* 添加命令行 ([b27c65d](https://github.com/WindyNanzi/mini-release/commit/b27c65db12f09387ebf4736add6dcd6011ec5491))
+
+
+
