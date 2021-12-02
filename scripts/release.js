@@ -81,7 +81,7 @@ async function main() {
   }
 
 
-  step('🍇 单元测试')
+  step('🍇 单元测试...')
   if(!isDryRun) {
     await run(bin('jest', ['--clearCache']))
     step('🍇 单元测试完成')
@@ -89,7 +89,7 @@ async function main() {
     step('🍉 跳过')
   }
 
-  step('🍈 更新包版本号与内部依赖版本号')
+  step('🍈 更新包版本号与内部依赖版本号...')
   if(!isDryRun) {
     updateVersions(targetVersion)
     step('🍈 更新版本号完成')
@@ -97,10 +97,10 @@ async function main() {
     step('🍉 跳过')
   }
 
-  step('🍋 打包')
+  step('🍋 打包...')
   await run('yarn', ['build'])
 
-  step('🍍 生成 changelog')
+  step('🍍 生成 changelog...')
   await run('yarn', ['changelog'])
   step('🍍 生成 changelog 完成')
 
@@ -116,18 +116,18 @@ async function main() {
   step('🍎 发布包')
   if(!isDryRun) {
     console.log(
-      chalk.bold.cyan('🍎  发布包需要发布到npm上，暂不处理')
+      chalk.bold.cyan('🍎 发布包需要发布到npm上，暂不处理')
     )
   }else {
     step('🍉 跳过')
   }
 
-  step('🍑 打tag')
+  step('🍑 打tag...')
   await runIfNotDry('git', ['tag', `v${targetVersion}`])
-  step('🍑 tag打完，推送tag分支到远程')
+  step('🍑 tag打完，推送tag分支到远程...')
   await runIfNotDry('git', ['push', 'origin', `refs/tags/v${targetVersion}`])
   step('🍑 推送 tag 分支完成')
-  step('🍐 推送代码到github')
+  step('🍐 推送代码到github...')
   await runIfNotDry('git', ['push'])
   step('🍐 推送完成！')
 
