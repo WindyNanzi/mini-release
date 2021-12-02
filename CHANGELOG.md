@@ -1,3 +1,7 @@
+## [0.1.7](https://github.com/WindyNanzi/mini-release/compare/v0.1.6...v0.1.7) (2021-12-02)
+
+
+
 ## [0.1.6](https://github.com/WindyNanzi/mini-release/compare/v0.1.5...v0.1.6) (2021-12-02)
 
 
