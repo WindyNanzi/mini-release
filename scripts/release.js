@@ -22,7 +22,7 @@ const { version: currentVersion } = JSON.parse(
   readFileSync(resolve(__dirname, '../package.json'), 'utf-8')
 )
 const args = minimist(process.argv.splice(2))
-const isDryRun = args.dry || true
+const isDryRun = args.dry
 const preId = args.preId || (semver.prerelease(currentVersion) && semver.prerelease(currentVersion)[0])
 
 const versionIncrements = ["patch", "minor", "major"]
