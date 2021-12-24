@@ -11,16 +11,15 @@ import chalk from "chalk"
 import { execa } from "execa"
 // 用于命令行中和用户交互
 import enquirer from "enquirer"
+import { createRequire } from 'module'
 
-
+const require = createRequire(import.meta.url)
 const { prompt } = enquirer
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = resolve(dirname(__filename))
 
+const { version: currentVersion } =  require(resolve(__dirname, '../package.json'))
 
-const { version: currentVersion } = JSON.parse(
-  readFileSync(resolve(__dirname, '../package.json'), 'utf-8')
-)
 const args = minimist(process.argv.splice(2))
 const isDryRun = args.dry
 const preId = args.preId || (semver.prerelease(currentVersion) && semver.prerelease(currentVersion)[0])
@@ -156,7 +155,7 @@ function updateVersions(version) {
  */
 function updatePackage(pkgRoot, version) {
   const pkgPath = resolve(pkgRoot, 'package.json')
-  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'))
+  const pkg = require(pkgPath, 'utf-8')
   pkg.version = version
   updateDeps(pkg, 'dependencies', version)
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
